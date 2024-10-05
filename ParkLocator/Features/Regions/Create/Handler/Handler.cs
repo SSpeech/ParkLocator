@@ -2,7 +2,7 @@
 using FluentValidation.Results;
 using MediatR;
 using ParkLocator.DataBase;
-using ParkLocator.Entities.Regions;
+using ParkLocator.Entities;
 using ParkLocator.Shared;
 using ParkLocator.Shared.Errors;
 using ParkLocator.Shared.Results;

@@ -1,9 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using ParkLocator.DataBase.Configurations;
-using ParkLocator.Entities.Districts;
-using ParkLocator.Entities.Parks;
-using ParkLocator.Entities.Regions;
-using ParkLocator.Entities.Streets;
+using ParkLocator.Entities;
 
 namespace ParkLocator.DataBase;
 public class ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : DbContext(options)

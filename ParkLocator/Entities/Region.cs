@@ -1,7 +1,4 @@
-﻿using ParkLocator.Entities.Districts;
-
-
-namespace ParkLocator.Entities.Regions;
+﻿namespace ParkLocator.Entities;
 
 public class Region
 {

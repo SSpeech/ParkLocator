@@ -1,5 +1,4 @@
 ﻿using MediatR;
-using ParkLocator.Entities.Regions;
 using ParkLocator.Features.Regions.Create.Contracts;
 using ParkLocator.Shared.Results;
 

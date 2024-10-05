@@ -1,7 +1,6 @@
-﻿using ParkLocator.Entities.Districts;
-using Throw;
+﻿using Throw;
 
-namespace ParkLocator.Entities.Parks;
+namespace ParkLocator.Entities;
 
 public sealed class Park
 {

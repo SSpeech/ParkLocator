@@ -1,8 +1,4 @@
-﻿using ParkLocator.Entities.Parks;
-using ParkLocator.Entities.Regions;
-using ParkLocator.Entities.Streets;
-
-namespace ParkLocator.Entities.Districts;
+﻿namespace ParkLocator.Entities;
 
 public class District
 {
