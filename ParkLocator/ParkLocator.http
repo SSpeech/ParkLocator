@@ -1,0 +1,6 @@
+@ParkLocator_HostAddress = http://localhost:5192
+
+GET {{ParkLocator_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
