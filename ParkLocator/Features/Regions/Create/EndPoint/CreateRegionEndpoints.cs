@@ -13,7 +13,7 @@ public static class CreateRegionEndpoints
         {
             var command = request.Map();
             var result = await sender.Send(command,cancellationToken);
-            return result.IsFailure ? Results.BadRequest(result.ResponseExtension()) : Results.Ok(result.Value);
+            return result.IsFailure ? Results.BadRequest(result.ResponseExtension()) : Results.Ok(result.Value); // will use created at route when get by id endpoint is create
         });
     }
 }
