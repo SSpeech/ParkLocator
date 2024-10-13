@@ -7,16 +7,16 @@ namespace ParkLocator.Features.Regions.Create.Extensions
 {
     public static class ResponseExtensions
     {
-        public static ProblemDetails ResponseExtension(this Result<Guid> results)
+        public static ProblemDetails ResponseExtension(this List<Error> errors, Error error)
         {
-            var (statusCode, type) = DetermineErrorStatus(results.Errors);
+            var (statusCode, type) = DetermineErrorStatus(errors);
             return new()
             {
-                Title = results.Error.Code,
+                Title = error.Code,
                 Type = type,
-                Detail = results.Error.Message,
+                Detail = error.Message,
                 Status = statusCode,
-                Extensions = { { nameof(results.Errors), results.Errors } }
+                Extensions = { { nameof(errors), errors } }
             };
         }
         private static (int, string) DetermineErrorStatus(List<Error> errors) => errors.Count switch

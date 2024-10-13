@@ -1,4 +1,5 @@
-﻿using FluentValidation;
+﻿using Carter;
+using FluentValidation;
 using FluentValidation.Results;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
@@ -11,36 +12,21 @@ using ParkLocator.Shared.Errors;
 using ParkLocator.Shared.Results;
 
 namespace ParkLocator.Features.Regions.Create;
-public static class CreateRegionEndpoints
-{
-    public static void AddCreateRegionRoute(this IEndpointRouteBuilder app)
-    {
-
-        app.MapPost("api/region", async (CreateRegionRequest request, ISender sender, CancellationToken cancellationToken) =>
-        {
-            var command = request.Map();
-            var result = await sender.Send(command, cancellationToken);
-            return result.IsFailure ? Results.BadRequest(result.ResponseExtension()) : Results.Ok(result.Value);
-        });
-    }
-}
 
 public class CreateRegion
 {
-    public class Command : IRequest<Result<Guid>>
-    {
-        public Command(string country, string name, string stateProvince, string locality)
+        public static void EndPoint(IEndpointRouteBuilder app)
         {
-            Country = country;
-            Name = name;
-            StateProvince = stateProvince;
-            Locality = locality;
+
+            app.MapPost("api/region", async (CreateRegionRequest request, ISender sender, CancellationToken cancellationToken) =>
+            {
+                var command = request.Map();
+                var result = await sender.Send(command, cancellationToken);
+                return result.IsFailure ? Results.BadRequest(result.Errors.ResponseExtension(result.Error)) : Results.Ok(result.Value);
+            });
         }
-        public string Country { get; private set; }
-        public string Name { get; private set; }
-        public string StateProvince { get; }
-        public string Locality { get; private set; }
-    }
+    
+    public record Command(string Country, string Name, string StateProvince, string Locality) : IRequest<Result<Guid>>;
     public class Validator : AbstractValidator<Command>
     {
         private readonly ApplicationDbContext _dbContext;

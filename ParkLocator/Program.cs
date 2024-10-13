@@ -1,8 +1,7 @@
 using FluentValidation;
 using Microsoft.EntityFrameworkCore;
 using ParkLocator.DataBase;
-using ParkLocator.Features.Regions.Create;
-using ParkLocator.Features.Regions.Retrieve.Regions.RegionsEndpoint;
+using ParkLocator.Features.Regions;
 using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -13,8 +12,6 @@ builder.Host.UseSerilog((context, loggerConfig) => loggerConfig.ReadFrom
 builder.Services.AddDbContext<ApplicationDbContext>(o =>
     o.UseSqlServer(builder.Configuration.GetConnectionString("Database")));
 
-
-builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
@@ -33,9 +30,8 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 app.UseSerilogRequestLogging();
-app.UseAuthorization();
+//app.UseAuthorization();
 
-app.AddCreateRegionRoute();
-app.AddRetrieveRegionsRoute();
+app.AddRoutes();
 
 app.Run();

@@ -2,5 +2,5 @@
 
 public abstract class BaseEntity
 {
-    public Guid Id { get; private init; }
+    public Guid Id { get; }
 }
