@@ -1,7 +1,7 @@
 using FluentValidation;
 using Microsoft.EntityFrameworkCore;
 using ParkLocator.DataBase;
-using ParkLocator.Features.Regions.Create.EndPoint;
+using ParkLocator.Features.Regions.Create;
 using ParkLocator.Features.Regions.Retrieve.Regions.RegionsEndpoint;
 using Serilog;
 

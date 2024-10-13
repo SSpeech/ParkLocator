@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using ParkLocator.DataBase.Configurations;
 using ParkLocator.Entities;
+using System.Reflection;
 
 namespace ParkLocator.DataBase;
 public class ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : DbContext(options)
@@ -12,9 +12,6 @@ public class ApplicationDbContext(DbContextOptions<ApplicationDbContext> options
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        modelBuilder.ApplyConfiguration(new RegionEntityConfiguration());
-        modelBuilder.ApplyConfiguration(new ParkEntityConfiguration());
-        modelBuilder.ApplyConfiguration(new DistrictEntityConfiguration());
-        modelBuilder.ApplyConfiguration(new StreetEntityConfiguration());
+        modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
     }
 }

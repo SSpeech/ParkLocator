@@ -1,5 +1,4 @@
 ﻿using MediatR;
-using Microsoft.AspNetCore.Http.HttpResults;
 
 namespace ParkLocator.Features.Regions.Retrieve.Regions.RegionsEndpoint;
 

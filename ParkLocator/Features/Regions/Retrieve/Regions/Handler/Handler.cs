@@ -1,6 +1,7 @@
 ﻿using MediatR;
 using Microsoft.EntityFrameworkCore;
 using ParkLocator.DataBase;
+using ParkLocator.Entities;
 using ParkLocator.Features.Regions.Create.Contracts;
 using ParkLocator.Shared.Results;
 
@@ -16,9 +17,9 @@ internal sealed class Handler : IRequestHandler<Command.Command, Result<IEnumera
 
     public async Task<Result<IEnumerable<RegionResponse>>> Handle(Command.Command request, CancellationToken cancellationToken)
     {
-        var regions = await _dbContext.Regions.ToListAsync(cancellationToken);
+        List<Region>? regions = await _dbContext.Regions.AsNoTracking().ToListAsync(cancellationToken);
 
-        var response = regions.ToResponse();
+        IEnumerable<RegionResponse>? response = regions.ToResponse();
 
         return Result.Success(response);
     }

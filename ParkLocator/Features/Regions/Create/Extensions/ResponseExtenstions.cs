@@ -19,13 +19,10 @@ namespace ParkLocator.Features.Regions.Create.Extensions
                 Extensions = { { nameof(results.Errors), results.Errors } }
             };
         }
-        private static (int, string) DetermineErrorStatus(List<Error> errors)
+        private static (int, string) DetermineErrorStatus(List<Error> errors) => errors.Count switch
         {
-            return errors.Count switch
-            {
-                0 => (StatusCodes.Status409Conflict, ErrorType.Conflict.Type),
-                _ => (StatusCodes.Status400BadRequest, ErrorType.Conflict.Type)
-            };
-        }
+            0 => (StatusCodes.Status409Conflict, ErrorType.Conflict.Type),
+            _ => (StatusCodes.Status400BadRequest, ErrorType.Conflict.Type)
+        };
     }
 }
