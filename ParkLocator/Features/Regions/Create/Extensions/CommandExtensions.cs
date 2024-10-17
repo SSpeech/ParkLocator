@@ -1,17 +1,14 @@
 ﻿using ParkLocator.Features.Regions.Create.Contracts;
+using static ParkLocator.Features.Regions.Create.CreateRegion;
 
 namespace ParkLocator.Features.Regions.Create.Extensions;
 
 public static class CommandExtensions
 {
-    public static Command.Command Map(this CreateRegionRequest request)
-    {
-        return new Command.Command(
+    public static Command Map(this CreateRegionRequest request) => new(
             request.Country,
             request.Name,
             request.StateProvince,
             request.Locality
             );
-
-    }
 }

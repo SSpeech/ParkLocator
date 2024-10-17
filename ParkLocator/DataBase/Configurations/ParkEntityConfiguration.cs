@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using ParkLocator.Entities.Parks;
+using ParkLocator.Entities;
 
 namespace ParkLocator.DataBase.Configurations;
 

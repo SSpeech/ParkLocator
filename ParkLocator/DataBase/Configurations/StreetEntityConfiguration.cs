@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using ParkLocator.Entities.Streets;
+using ParkLocator.Entities;
 
 namespace ParkLocator.DataBase.Configurations;
 
@@ -11,8 +11,8 @@ public class StreetEntityConfiguration : IEntityTypeConfiguration<Street>
         builder.ToTable(nameof(Street));
 
         builder.Property(b => b.Id)
-       .IsRequired()
-       .ValueGeneratedOnAdd();
+                   .IsRequired()
+                   .ValueGeneratedOnAdd();
         builder.HasKey(street => street.Id);
 
         builder.Property(street => street.Name)

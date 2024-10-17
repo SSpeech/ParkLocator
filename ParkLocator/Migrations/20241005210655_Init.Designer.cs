@@ -12,8 +12,8 @@ using ParkLocator.DataBase;
 namespace ParkLocator.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240924211835_finTune")]
-    partial class finTune
+    [Migration("20241005210655_Init")]
+    partial class Init
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
