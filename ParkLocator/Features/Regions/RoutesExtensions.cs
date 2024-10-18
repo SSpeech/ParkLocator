@@ -1,5 +1,5 @@
-﻿using ParkLocator.Features.Regions.Create;
-using ParkLocator.Features.Regions.Retrieve;
+﻿using ParkLocator.Features.Regions.Commands;
+using ParkLocator.Features.Regions.Queries;
 
 namespace ParkLocator.Features.Regions;
 
@@ -7,7 +7,7 @@ public static class RoutesExtensions
 {
     public static void AddRoutes(this IEndpointRouteBuilder app)
     {
-        RetrievesRegions.Endpoint(app);
+        GetRegion.Endpoint(app);
         CreateRegion.EndPoint(app);
 
     }

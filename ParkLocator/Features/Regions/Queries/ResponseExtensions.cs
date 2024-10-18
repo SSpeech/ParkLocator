@@ -1,10 +1,10 @@
-﻿
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using ParkLocator.Shared.Errors;
-using ParkLocator.Shared.Results;
 
-namespace ParkLocator.Features.Regions.Create.Extensions
+namespace ParkLocator.Features.Regions.Queries
 {
+    //TODO: This class was located with the Commands and it's a Query Response Extension
+    //I think it's way too generic to have it here with the Regions...
     public static class ResponseExtensions
     {
         public static ProblemDetails ResponseExtension(this List<Error> errors, Error error)

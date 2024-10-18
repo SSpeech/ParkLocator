@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using ParkLocator.Entities;
+using ParkLocator.Shared;
 
 namespace ParkLocator.DataBase.Configurations;
 
@@ -10,11 +11,9 @@ public class RegionEntityConfiguration : IEntityTypeConfiguration<Region>
     {
         builder.ToTable(nameof(Region));
 
-        builder.Property(b => b.Id)
-       .IsRequired()
-       .ValueGeneratedOnAdd();
+        //TODO: Have a look at this extension method. Remember: DRY
+        builder.ConfigureKeyValueOnAdd();
 
-        builder.HasKey(region => region.Id);
         builder.Property(region => region.Name)
             .IsRequired()
             .HasMaxLength(256);

@@ -1,11 +1,10 @@
 ﻿using ParkLocator.Entities;
-using ParkLocator.Features.Regions.Create.Contracts;
 
-namespace ParkLocator.Features.Regions.Retrieve;
+namespace ParkLocator.Features.Regions.Queries;
 
 public static class RegionsExtensions
 {
-    public static RegionResponse ToResponse(this Region region) =>
+    public static RegionDto ToResponse(this Region region) =>
         new(region.Id,
             region.Country,
             region.Name,
@@ -13,6 +12,6 @@ public static class RegionsExtensions
             [],
             region.Locality);
 
-    public static IQueryable<RegionResponse> ToResponse(this IQueryable<Region> regions)
+    public static IQueryable<RegionDto> ToResponse(this IQueryable<Region> regions)
         => regions.Select(region => region.ToResponse());
 }

@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using ParkLocator.Entities;
+using ParkLocator.Shared;
 
 namespace ParkLocator.DataBase.Configurations;
 
@@ -9,11 +10,8 @@ public class DistrictEntityConfiguration : IEntityTypeConfiguration<District>
     public void Configure(EntityTypeBuilder<District> builder)
     {
         builder.ToTable(nameof(District));
-        builder.Property(b => b.Id)
-       .IsRequired()
-       .ValueGeneratedOnAdd();
 
-        builder.HasKey(district => district.Id);
+        builder.ConfigureKeyValueOnAdd();
 
         builder.HasMany(district => district.Parks)
             .WithOne(park => park.District)
@@ -26,8 +24,8 @@ public class DistrictEntityConfiguration : IEntityTypeConfiguration<District>
             .OnDelete(DeleteBehavior.Cascade);
 
         builder.HasOne(district => district.Region)
-         .WithMany(region => region.Districts)
-         .HasForeignKey(district => district.RegionId)
-         .OnDelete(DeleteBehavior.Cascade);
+             .WithMany(region => region.Districts)
+             .HasForeignKey(district => district.RegionId)
+             .OnDelete(DeleteBehavior.Cascade);
     }
 }
